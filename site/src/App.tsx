@@ -2,7 +2,7 @@ import { CardOverflow } from "@/components/CardOverflow"
 import { Colophon } from "@/components/Colophon"
 import { Footer } from "@/components/Footer"
 import { Hero } from "@/components/Hero"
-import { Marquee } from "@/components/Marquee"
+import { Materials } from "@/components/Materials"
 import { Nav } from "@/components/Nav"
 import { Process } from "@/components/Process"
 import { References } from "@/components/References"
@@ -26,7 +26,7 @@ export default function App() {
       <main id="main">
         <Hero />
         <SectionDivider />
-        <Marquee />
+        <Materials />
         <SectionDivider />
         <Services />
         <SectionDivider />

@@ -220,14 +220,6 @@ export const references: Reference[] = [
   },
 ]
 
-export const marqueeItems = [
-  "Hard Shadows",
-  "Halftone Print",
-  "Flat Color Blocking",
-  "Variable Type",
-  "Scroll Choreography",
-  "Sticker Collage",
-]
 
 export const footerLinks = {
   sitemap: nav,
