@@ -72,7 +72,7 @@ export function Hero() {
     <section
       id="top"
       ref={rootRef}
-      className="relative overflow-hidden bg-paper pt-32 pb-24 sm:pt-40 sm:pb-32"
+      className="relative overflow-x-clip overflow-y-hidden bg-paper pt-32 pb-24 sm:pt-40 sm:pb-32"
     >
       <div
         aria-hidden="true"

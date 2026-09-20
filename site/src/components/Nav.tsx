@@ -30,7 +30,7 @@ export function Nav() {
           </span>
         </a>
 
-        <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">
           {nav.map((item) => (
             <a
               key={item.href}
@@ -42,7 +42,7 @@ export function Nav() {
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <Button as="a" href="#about" variant="ink" className="px-5 py-2.5 text-sm">
             About this build
           </Button>
@@ -50,7 +50,7 @@ export function Nav() {
 
         <button
           type="button"
-          className="grid h-11 w-11 cursor-pointer place-items-center rounded-[8px] border-[3px] border-line bg-paper md:hidden"
+          className="grid h-11 w-11 cursor-pointer place-items-center rounded-[8px] border-[3px] border-line bg-paper lg:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           aria-controls="mobile-nav"
@@ -64,7 +64,7 @@ export function Nav() {
         <nav
           id="mobile-nav"
           aria-label="Mobile"
-          className="flex flex-col gap-1 bg-paper px-5 py-4 md:hidden"
+          className="flex flex-col gap-1 bg-paper px-5 py-4 lg:hidden"
         >
           {nav.map((item) => (
             <a
