@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@theme {
+  /* ---- Palette: 2 neutrals + 3 accents, deliberately capped. Paper is a
+     crisp pure white, not the reflexive warm-cream "tasteful AI" surface. ---- */
+  --color-ink: #111110;
+  --color-paper: #ffffff;
+  --color-paper-dim: #edf0ef;
+  --color-electric: #2f4dff;
+  --color-electric-dim: #1f36c4;
+  --color-acid: #d6ff3f;
+  --color-pink: #ff4fa3;
+  --color-line: #111110;
+
+  /* ---- Type ---- */
+  --font-display: "Bricolage Grotesque", "Archivo Black", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* ---- Hard offset shadows (no blur) — the signature brutalist tell ---- */
+  --shadow-brutal-sm: 3px 3px 0 0 var(--color-ink);
+  --shadow-brutal: 6px 6px 0 0 var(--color-ink);
+  --shadow-brutal-lg: 10px 10px 0 0 var(--color-ink);
+  --shadow-brutal-pink: 6px 6px 0 0 var(--color-pink);
+  --shadow-brutal-electric: 6px 6px 0 0 var(--color-electric);
+  --shadow-brutal-acid: 6px 6px 0 0 var(--color-acid);
+
+  --radius-card: 14px;
+  --radius-pill: 999px;
+
+  --ease-brutal: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-marquee: marquee 28s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    scrollbar-color: var(--color-ink) var(--color-paper-dim);
+    scrollbar-width: thin;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    caret-color: var(--color-pink);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: var(--color-ink);
+    color: var(--color-acid);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+
+  /* Respect reduced motion at the platform level for anything CSS-driven */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  .pattern-dots {
+    background-image: radial-gradient(var(--color-ink) 1.6px, transparent 1.6px);
+    background-size: 15px 15px;
+  }
+}
