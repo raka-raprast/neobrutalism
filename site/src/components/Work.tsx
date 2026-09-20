@@ -9,6 +9,7 @@ type Filter = "All" | WorkCategory
 
 export function Work() {
   const rootRef = useRef<HTMLDivElement>(null)
+  const gridRef = useRef<HTMLDivElement>(null)
   const flipState = useRef<Flip.FlipState | null>(null)
   const [active, setActive] = useState<Filter>("All")
 
@@ -17,6 +18,12 @@ export function Work() {
 
   function selectFilter(filter: Filter) {
     if (filter === active) return
+    const grid = gridRef.current
+    // Lock the grid at its current (pre-filter) height before the DOM swaps cards.
+    // Flip's `absolute: true` pulls every card out of flow for the animation, which
+    // otherwise collapses this container to 0 and yanks everything below it up, then
+    // back down when the cards return to flow \u2014 the flash the filter click showed.
+    if (grid) gsap.set(grid, { height: grid.getBoundingClientRect().height })
     flipState.current = Flip.getState(".work-card")
     setActive(filter)
   }
@@ -25,6 +32,7 @@ export function Work() {
     () => {
       if (!flipState.current) return
       const reduced = prefersReducedMotion()
+      const grid = gridRef.current
 
       Flip.from(flipState.current, {
         duration: reduced ? 0 : 0.55,
@@ -38,6 +46,22 @@ export function Work() {
             { autoAlpha: 1, scale: 1, duration: reduced ? 0 : 0.4, stagger: reduced ? 0 : 0.04 },
           ),
         onLeave: (elements) => gsap.to(elements, { autoAlpha: 0, scale: 0.85, duration: reduced ? 0 : 0.3 }),
+        onComplete: () => {
+          if (!grid) return
+          const lockedHeight = grid.getBoundingClientRect().height
+          gsap.set(grid, { height: "auto" })
+          const naturalHeight = grid.getBoundingClientRect().height
+          gsap.fromTo(
+            grid,
+            { height: lockedHeight },
+            {
+              height: naturalHeight,
+              duration: reduced ? 0 : 0.4,
+              ease: "power2.inOut",
+              onComplete: () => gsap.set(grid, { height: "auto" }),
+            },
+          )
+        },
       })
 
       flipState.current = null
@@ -75,7 +99,7 @@ export function Work() {
           </div>
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div ref={gridRef} className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {visible.map((item) => (
             <article
               key={item.name}
