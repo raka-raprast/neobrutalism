@@ -24,12 +24,13 @@ export function Hero() {
         { reduce: "(prefers-reduced-motion: reduce)", full: "(prefers-reduced-motion: no-preference)" },
         (context) => {
           const { reduce } = context.conditions as { reduce: boolean }
+          if (reduce) return
+
 
           const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: reduce ? 0 : 0.55 } })
 
           tl.from(".hero-line", { yPercent: 110, stagger: reduce ? 0 : 0.07 })
             .from(".hero-sub", { autoAlpha: 0, y: 16 }, "-=0.35")
-            .from(".hero-cta > *", { autoAlpha: 0, y: 14, stagger: reduce ? 0 : 0.05 }, "-=0.25")
             .from(
               ".hero-badge",
               { autoAlpha: 0, scale: 0.6, rotate: -24, duration: reduce ? 0 : 0.45, ease: "back.out(1.8)" },
