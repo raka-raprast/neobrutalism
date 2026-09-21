@@ -2,16 +2,9 @@ import { useGSAP } from "@gsap/react"
 import { ArrowDown } from "@phosphor-icons/react"
 import gsap from "gsap"
 import { useRef } from "react"
-import heroStampImage from "@/assets/hero/hero-stamp.webp"
+import heroEvidenceImage from "@/assets/hero/hero-evidence.webp"
 import { Badge } from "@/components/ui/Badge"
 import { Button } from "@/components/ui/Button"
-
-const previewCards = [
-  { label: "Brand", tone: "Identity", rotate: "-rotate-6", accent: "bg-electric text-white", position: "left-2 top-6 sm:left-6" },
-  { label: "Web", tone: "Build", rotate: "rotate-3", accent: "bg-pink text-ink", position: "right-0 top-0 sm:right-4" },
-  { label: "Motion", tone: "Interaction", rotate: "rotate-8", accent: "bg-acid text-ink", position: "left-10 bottom-0 sm:left-20" },
-  { label: "Packaging", tone: "Physical", rotate: "-rotate-2", accent: "bg-white text-ink", position: "right-6 bottom-10 sm:right-12" },
-]
 
 export function Hero() {
   const rootRef = useRef<HTMLDivElement>(null)
@@ -26,39 +19,20 @@ export function Hero() {
           const { reduce } = context.conditions as { reduce: boolean }
           if (reduce) return
 
+          const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 0.55 } })
 
-          const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: reduce ? 0 : 0.55 } })
-
-          tl.from(".hero-line", { yPercent: 110, stagger: reduce ? 0 : 0.07 })
+          tl.from(".hero-line", { yPercent: 110, stagger: 0.07 })
             .from(".hero-sub", { autoAlpha: 0, y: 16 }, "-=0.35")
             .from(
               ".hero-badge",
-              { autoAlpha: 0, scale: 0.6, rotate: -24, duration: reduce ? 0 : 0.45, ease: "back.out(1.8)" },
+              { autoAlpha: 0, scale: 0.6, rotate: -24, duration: 0.45, ease: "back.out(1.8)" },
               "-=0.25",
             )
             .from(
               ".hero-stamp",
-              { autoAlpha: 0, scale: 0.5, rotate: -60, duration: reduce ? 0 : 0.6, ease: "back.out(1.6)" },
+              { autoAlpha: 0, scale: 0.55, rotate: 12, duration: 0.65, ease: "back.out(1.5)" },
               "-=0.3",
             )
-            .from(
-              ".hero-card",
-              { autoAlpha: 0, y: 24, stagger: reduce ? 0 : 0.05, duration: reduce ? 0 : 0.4 },
-              "<",
-            )
-
-          if (!reduce) {
-            gsap.to(".hero-card", {
-              yPercent: -14,
-              ease: "none",
-              scrollTrigger: {
-                trigger: rootRef.current,
-                start: "top top",
-                end: "bottom top",
-                scrub: 0.6,
-              },
-            })
-          }
 
           return () => tl.kill()
         },
@@ -117,26 +91,18 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="relative mx-auto h-[320px] w-full max-w-[420px] lg:h-[380px]">
+        <div className="relative mx-auto h-[340px] w-full max-w-[440px] lg:h-[420px] lg:max-w-[480px]">
           <img
-            src={heroStampImage}
-            alt=""
-            aria-hidden="true"
-            className="hero-stamp pointer-events-none absolute -left-32 top-0 hidden w-40 -rotate-12 lg:block xl:-left-36 xl:w-48"
+            src={heroEvidenceImage}
+            alt="A rubber stamp mid-press over a halftone ink bloom, a torn color-swatch contact strip, a binder-clipped card, and a drafting compass — a scattered evidence board standing in for the study's reference research."
+            loading="eager"
+            width="1100"
+            height="1100"
+            className="hero-stamp absolute inset-0 h-full w-full rotate-2 object-contain"
           />
-          <Badge accent="pink" rotate="rotate-6" className="hero-badge absolute -top-6 right-2 z-20 sm:right-8">
+          <Badge accent="pink" rotate="rotate-6" className="hero-badge absolute -top-4 right-0 z-20 sm:right-4">
             &#9733; Proof of Concept &mdash; 2026
           </Badge>
-
-          {previewCards.map((card) => (
-            <div
-              key={card.label}
-              className={`hero-card absolute ${card.position} ${card.rotate} w-36 rounded-card border-[3px] border-line p-4 shadow-brutal sm:w-40 ${card.accent}`}
-            >
-              <p className="font-mono text-xs font-bold uppercase tracking-wide">{card.tone}</p>
-              <p className="mt-3 font-display text-xl font-extrabold uppercase">{card.label}</p>
-            </div>
-          ))}
         </div>
       </div>
     </section>
