@@ -71,7 +71,7 @@ export function Hero() {
           <circle cx="80" cy="100" r="30" />
         </g>
       </svg>
-      <svg className="hero-cloud pointer-events-none absolute -bottom-10 -right-8 h-24 w-32 sm:-bottom-16 sm:-right-10 sm:h-40 sm:w-52 lg:h-52 lg:w-64" viewBox="0 0 200 140" aria-hidden="true">
+      <svg className="hero-cloud pointer-events-none absolute -bottom-4 -right-4 h-24 w-32 sm:-bottom-16 sm:-right-10 sm:h-40 sm:w-52 lg:h-52 lg:w-64" viewBox="0 0 200 140" aria-hidden="true">
         <g fill="var(--color-pink)" stroke="#111110" strokeWidth="4">
           <circle cx="60" cy="80" r="42" />
           <circle cx="110" cy="60" r="34" />
@@ -149,7 +149,7 @@ export function Hero() {
           </div>
 
           {/* Scalloped stamp badge, echoing the torn-edge seal used for event/date info */}
-          <svg className="hero-stamp h-24 w-24 shrink-0 -rotate-6 sm:h-36 sm:w-36" viewBox="0 0 140 140" aria-hidden="true">
+          <svg className="hero-stamp ml-auto h-24 w-24 shrink-0 -rotate-6 sm:ml-0 sm:h-36 sm:w-36" viewBox="0 0 140 140" aria-hidden="true">
             <path d={stampPath} fill="var(--color-pink)" stroke="#111110" strokeWidth="4" strokeLinejoin="round" />
             <text
               x="70"
