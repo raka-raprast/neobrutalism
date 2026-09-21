@@ -100,7 +100,7 @@ export function Hero() {
             </g>
           </svg>
 
-          <h1 className="font-display text-[13vw] font-extrabold uppercase leading-[0.92] sm:text-7xl lg:text-[6rem]">
+          <h1 className="font-display text-[clamp(3.5rem,9.5vw,9.75rem)] font-extrabold uppercase leading-[0.9]">
             <span className="block overflow-hidden pb-1">
               <span className="hero-line block">A system</span>
             </span>
