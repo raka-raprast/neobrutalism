@@ -37,7 +37,7 @@ export function CardOverflow() {
   )
 
   return (
-    <section id="craft" ref={rootRef} className="overflow-x-clip bg-paper py-24 sm:py-32 lg:overflow-visible">
+    <section id="craft" ref={rootRef} className="overflow-x-clip bg-paper py-24 sm:py-32">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
         <h2 className="max-w-2xl font-display text-4xl font-extrabold uppercase sm:text-6xl">
           Even the containers refuse to behave.
