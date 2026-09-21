@@ -88,6 +88,12 @@ export function Hero() {
             viewBox="0 0 140 100"
             aria-hidden="true"
           >
+            <g fill="var(--color-pink)" stroke="#111110" strokeWidth="2.5">
+              <circle cx="27" cy="61" r="6" />
+              <circle cx="76" cy="58" r="6" />
+              <circle cx="87" cy="41" r="5" />
+              <circle cx="112" cy="39" r="5" />
+            </g>
             <g fill="none" stroke="#111110" strokeWidth="4" strokeLinecap="round">
               <circle cx="52" cy="52" r="38" transform="rotate(-4 52 52)" />
               <circle cx="30" cy="42" r="4" fill="#111110" />
@@ -102,7 +108,11 @@ export function Hero() {
 
           <h1 className="font-display text-[clamp(3.5rem,9.5vw,9.75rem)] font-extrabold uppercase leading-[0.9]">
             <span className="block overflow-hidden pb-1">
-              <span className="hero-line block">A system</span>
+              <span className="hero-line block">
+                <span className="inline-block rotate-1 rounded-[6px] border-[3px] border-line bg-electric px-4 py-1 text-white shadow-brutal-lg">
+                  A system
+                </span>
+              </span>
             </span>
             <span className="block overflow-hidden pb-1">
               <span className="hero-line block">
@@ -125,7 +135,7 @@ export function Hero() {
             </p>
 
             <div className="hero-cta mt-8 flex flex-wrap items-center gap-6">
-              <Button as="a" href="#work" variant="ink">
+              <Button as="a" href="#work" variant="pink">
                 See the gallery
               </Button>
               <a
