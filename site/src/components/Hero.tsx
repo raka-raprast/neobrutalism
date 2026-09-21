@@ -88,21 +88,21 @@ export function Hero() {
             viewBox="0 0 140 100"
             aria-hidden="true"
           >
-            <g fill="var(--color-pink)" stroke="#111110" strokeWidth="2.5">
-              <circle cx="27" cy="61" r="6" />
-              <circle cx="76" cy="58" r="6" />
-              <circle cx="87" cy="41" r="5" />
-              <circle cx="112" cy="39" r="5" />
-            </g>
-            <g fill="none" stroke="#111110" strokeWidth="4" strokeLinecap="round">
-              <circle cx="52" cy="52" r="38" transform="rotate(-4 52 52)" />
+            <g transform="rotate(-4 52 52)">
+              <circle cx="52" cy="52" r="38" fill="var(--color-paper)" stroke="#111110" strokeWidth="4" />
+              <circle cx="27" cy="61" r="6" fill="var(--color-pink)" stroke="#111110" strokeWidth="2.5" />
+              <circle cx="76" cy="58" r="6" fill="var(--color-pink)" stroke="#111110" strokeWidth="2.5" />
               <circle cx="30" cy="42" r="4" fill="#111110" />
               <circle cx="70" cy="40" r="4" fill="#111110" />
-              <path d="M32 66c8 8 30 8 38 -2" />
-              <circle cx="98" cy="34" r="30" transform="rotate(6 98 34)" />
+              <path d="M32 66c8 8 30 8 38 -2" fill="none" stroke="#111110" strokeWidth="4" strokeLinecap="round" />
+            </g>
+            <g transform="rotate(6 98 34)">
+              <circle cx="98" cy="34" r="30" fill="var(--color-paper)" stroke="#111110" strokeWidth="4" />
+              <circle cx="87" cy="41" r="5" fill="var(--color-pink)" stroke="#111110" strokeWidth="2.5" />
+              <circle cx="112" cy="39" r="5" fill="var(--color-pink)" stroke="#111110" strokeWidth="2.5" />
               <circle cx="88" cy="26" r="3.5" fill="#111110" />
               <circle cx="110" cy="26" r="3.5" fill="#111110" />
-              <path d="M90 44c6 -4 18 -4 22 0" />
+              <path d="M90 44c6 -4 18 -4 22 0" fill="none" stroke="#111110" strokeWidth="4" strokeLinecap="round" />
             </g>
           </svg>
 
